@@ -1,3 +1,5 @@
-import {getStocks } from "./app.js"
+import {getStocks, getEOD} from "./app.js"
 
+// Prueba
 getStocks("MSFT")
+getEOD()
