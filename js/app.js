@@ -1,4 +1,4 @@
-import { API_TOKEN, STOCK_DATA_URL, EOD_URL } from "./environment.js"
+import { API_TOKEN, STOCK_DATA_URL, EOD_URL, NEWS_URL } from "./environment.js"
 
 /**
  * Diccionario con las primeras 50 empresas del S&P 500
@@ -100,7 +100,23 @@ const convertNamesToSymbols = (companyNames) => {
 }
 
 /**
- * Realiza una petición a la API de acciones y devuelve los datos para las empresas solicitadas.
+ * Calcula una fecha en el pasado restando días a la fecha actual
+ * @param {number} daysAgo - Número de días hacia atrás
+ * @returns {string} Fecha en formato Y-m-d (por ejemplo: "2025-10-16")
+ * @example
+ * getDateDaysAgo(7) // "2025-10-16" (si hoy es 2025-10-23)
+ */
+const getDateDaysAgo = (daysAgo) => {
+  const date = new Date()
+  date.setDate(date.getDate() - daysAgo)
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, "0")
+  const day = String(date.getDate()).padStart(2, "0")
+  return `${year}-${month}-${day}`
+}
+
+/**
+ * Realiza una petición a la API de acciones y devuelve los datos para las empresas solicitadas (STOCK del dia de hoy).
  *
  * @async
  * @function
@@ -157,11 +173,20 @@ export const getStocks = async (companyNames = null) => {
  * @param {string} [companyNames] - Nombres de empresas separados por comas (por ejemplo "Apple,Microsoft").
  *                                  Tambien acepta simbolos directamente (por ejemplo: "AAPL,MSFT").
  *                                  Si no se proporciona, se selecciona una empresa aleatoria del S&P 500.
+ * @param {number|string} [daysAgo] - Número de días hacia atrás para recuperar datos (por ejemplo: 7 para últimos 7 días).
+ *                                    También acepta una fecha específica en formato Y-m-d, Y-m o Y (por ejemplo: "2025-10-23", "2025-10", "2025").
+ *                                    Si no se proporciona, obtiene todos los datos disponibles.
  * @returns {Promise<*>} Promesa que resuelve con el objeto JSON devuelto por la API.
  * @throws {Error} Si la petición falla o el parseo a JSON produce un error; el error se re-lanza.
  * @example
  * // Obtener datos para Apple por nombre
  * const data = await getEOD("Apple");
+ * @example
+ * // Obtener datos de los últimos 7 días
+ * const data = await getEOD("Apple", 7);
+ * @example
+ * // Obtener datos desde una fecha específica
+ * const data = await getEOD("Apple", "2025-10-01");
  * @example
  * // Obtener datos para varias empresas
  * const data = await getEOD("Apple,Microsoft");
@@ -172,14 +197,71 @@ export const getStocks = async (companyNames = null) => {
  * Esta función usa las constantes EOD_URL y API_TOKEN importadas desde environment.js.
  * La función imprime los datos en consola antes de devolverlos.
  */
-export const getEOD = async (companyNames = null) => {
+export const getEOD = async (companyNames = null, daysAgo = null) => {
   const symbols = companyNames
     ? convertNamesToSymbols(companyNames)
     : getRandomSymbol()
   const selectedSymbols = symbols || getRandomSymbol()
+
+  // Construir la URL con el parámetro date_from si se proporciona
+  let url = EOD_URL + `?symbols=${selectedSymbols}&api_token=${API_TOKEN}`
+
+  if (daysAgo !== null) {
+    // Si daysAgo es un número, calcular la fecha
+    const dateFrom =
+      typeof daysAgo === "number" ? getDateDaysAgo(daysAgo) : daysAgo
+    url += `&date_from=${dateFrom}`
+  }
+
+  try {
+    const response = await fetch(url)
+    const data = await response.json()
+    // TODO: Borrar despues el console.log
+    console.log(data)
+    return data
+  } catch (error) {
+    console.log(error.message)
+    throw error
+  }
+}
+
+/**
+ * Obtiene noticias para una o varias empresas
+ *
+ * @async
+ * @function getNews
+ * @param {string} [companyNames] - Nombres de empresas separados por comas (por ejemplo "Apple,Microsoft").
+ *                                  También acepta símbolos bursátiles directamente (por ejemplo: "AAPL,MSFT").
+ *                                  Si no se proporciona, obtiene noticias de una empresa aleatoria del S&P 500.
+ * @param {number} [limit=3] - Número máximo de noticias a obtener (por defecto es 3 por que la API no da para mas :P).
+ * @returns {Promise<*>} Promesa que resuelve con el objeto JSON devuelto por la API conteniendo las noticias.
+ * @throws {Error} Si la petición falla o el parseo a JSON produce un error; el error se re-lanza.
+ * @example
+ * // Obtener noticias para Apple
+ * const news = await getNews("Apple");
+ * @example
+ * // Obtener noticias para varias empresas
+ * const news = await getNews("Apple,Microsoft");
+ * @example
+ * // Obtener 20 noticias para Tesla
+ * const news = await getNews("Tesla", 20);
+ * @example
+ * // Obtener noticias de una empresa aleatoria del S&P 500
+ * const news = await getNews();
+ * @remarks
+ * Esta función usa las constantes NEWS_URL y API_TOKEN importadas desde environment.js.
+ * La función imprime los datos en consola antes de devolverlos.
+ */
+export const getNews = async (companyNames = null, limit = 3) => {
+  const symbols = companyNames
+    ? convertNamesToSymbols(companyNames)
+    : getRandomSymbol()
+  const selectedSymbols = symbols || getRandomSymbol()
+
   try {
     const response = await fetch(
-      EOD_URL + `?symbols=${selectedSymbols}&api_token=${API_TOKEN}`
+      NEWS_URL +
+        `?symbols=${selectedSymbols}&limit=${limit}&language=en&api_token=${API_TOKEN}`
     )
     const data = await response.json()
     // TODO: Borrar despues el console.log
