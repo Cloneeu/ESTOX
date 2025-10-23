@@ -68,6 +68,37 @@ const getRandomSymbol = () => {
 }
 
 /**
+ * Obtiene 3 empresas aleatorias sin repetir del S&P 500
+ * @returns {Array<{name: string, symbol: string}>} Array con 3 objetos conteniendo el nombre y símbolo de cada empresa
+ * @example
+ * const companies = getRandomCompanies()
+ * // Retorna algo como:
+ * // [
+ * //   { name: "Apple", symbol: "AAPL" },
+ * //   { name: "Microsoft", symbol: "MSFT" },
+ * //   { name: "Tesla", symbol: "TSLA" }
+ * // ]
+ */
+export const getRandomCompanies = () => {
+  const companies = Object.entries(SP500_TOP_50) // Convierte el objeto a array de [nombre, símbolo]
+  const selected = []
+  const usedIndices = new Set()
+
+  while (selected.length < 3) {
+    const randomIndex = Math.floor(Math.random() * companies.length)
+
+    // Solo agregar si no hemos usado este índice antes
+    if (!usedIndices.has(randomIndex)) {
+      usedIndices.add(randomIndex)
+      const [name, symbol] = companies[randomIndex]
+      selected.push({ name, symbol })
+    }
+  }
+
+  return selected
+}
+
+/**
  * Convierte nombres de empresas a símbolos bursátiles
  * @param {string} companyNames - Nombres de empresas separados por comas
  * @returns {string} Símbolos bursátiles separados por comas, o el input original si no se encuentran coincidencias

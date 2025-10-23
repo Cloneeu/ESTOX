@@ -1,6 +1,12 @@
-import {getStocks, getEOD, getNews} from "./app.js"
+import {getStocks, getEOD, getNews, getRandomCompanies} from "./app.js"
 
 // PRUEBAS
+const companies = getRandomCompanies()
+console.log(companies)
+// Acceder a los datos:
+// companies[0].name   // "Apple"
+// companies[0].symbol // "AAPL"
+
 // Por nombre de empresa
 await getStocks("Apple")
 await getStocks("Microsoft")
