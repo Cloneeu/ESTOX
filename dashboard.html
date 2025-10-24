@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>STX</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2bd6d7c259.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg border-bottom bg-white" style="min-height: 70px;">
+      <div class="container-fluid" >
+          <a href="#" class="navbar-brand ms-5"> <b><i><h1  style="font-weight: 900 !important;">STX</h1></i></b> </a>
+
+          <form id="searchForm" class="d-flex ms-auto me-3">
+            <input id="searchInput" type="text" class="me-2" placeholder="Search a Company">
+            <button type="submit" class="btn btn-dark"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+          </form>
+          <div class="round-btn-secondary me-3">  
+            <a href="#" class=""  ><i class="fa-solid fa-user-tie"></i></a>
+          </div>
+          <div class="round-btn me-5">    
+            <a href="#" class=""><i class="fa-solid fa-gear"></i></a>
+          </div>
+      </div>
+      
+
+     
+    </nav>
+    <header class="container-fluid ms-5 mt-2">
+
+      <h1>BENVENID@!!!</h1>
+    </header>
+
+    <main class="container w-100 mt-4 ms-5">
+
+      <div class="container top-container mt3">
+
+        <h3><i class="fa-solid fa-ranking-star"></i> Top Empresas Semanal</h3>
+
+        <div class="row w-100 justify-content-between">
+
+          <div class="col-4 single-stock-card-sm card-shadow">
+            <div class="single-stock-header">
+              <h3 class="single-stock-name">Amazon</h3>
+              <p class="single-stock-symbol">AMZN</p>
+            </div>
+          
+            <div class="single-stock-price-row">
+              <p class="single-stock-price">3,983.46</p>
+              <p class="single-stock-currency">MXN</p>
+            </div>
+          
+            <p class="single-stock-diff positive">+63.62</p>
+          </div>
+
+
+          <div class="col-4 single-stock-card-sm card-shadow">
+            <div class="single-stock-header">
+              <h3 class="single-stock-name">Amazon</h3>
+              <p class="single-stock-symbol">AMZN</p>
+            </div>
+          
+            <div class="single-stock-price-row">
+              <p class="single-stock-price">3,983.46</p>
+              <p class="single-stock-currency">MXN</p>
+            </div>
+          
+            <p class="single-stock-diff positive">+63.62</p>
+          </div>
+
+          <div class="col-4 single-stock-card-sm card-shadow">
+            <div class="single-stock-header">
+              <h3 class="single-stock-name">Amazon</h3>
+              <p class="single-stock-symbol">AMZN</p>
+            </div>
+          
+            <div class="single-stock-price-row">
+              <p class="single-stock-price">3,983.46</p>
+              <p class="single-stock-currency">MXN</p>
+            </div>
+          
+            <p class="single-stock-diff positive">+63.62</p>
+          </div>
+
+        </div>
+      </div>
+    
+
+
+
+      <div class="row w-100 justify-content-between mt-5" >
+      
+        
+          <div class="col-8 card-chart card-shadow">
+  
+            <div class="card-body">            
+              <div class="stock-row">
+                <div class="stock-info">
+                  <h3 class="stock-name mt-2">Amazon</h3>
+                  <p class="stock-symbol">AMZN</p>
+                </div>
+                <p class="stock-change positive">+1.62%</p>
+              </div>          
+              <canvas id="miGrafica" class="grafica-valores"></canvas>
+            </div>
+          </div>  
+        
+
+          <div class="col-4 single-stock-card card-shadow">
+            <div class="single-stock-header">
+              <h3 class="single-stock-name">Amazon</h3>
+              <p class="single-stock-symbol">AMZN</p>
+            </div>
+          
+            <div class="single-stock-price-row">
+              <p class="single-stock-price">3,983.46</p>
+              <p class="single-stock-currency">MXN</p>
+            </div>
+          
+            <p class="single-stock-diff positive">+63.62</p>
+          </div>
+        
+
+          
+
+
+      </div>
+     
+      
+
+
+    </main>
+
+
+  </body>
+  
+  
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="./js/chart.js"></script>
+</html>
