@@ -28,7 +28,7 @@ Hasta el momento el avance es la inicialización del repositorio, abrir los arch
 
 ---
 
-## 🧑‍💻 Reporte de actividades 
+## 🧑‍💻 1er. reporte de actividades 
 
 
 | **Miembro del Equipo**  | **Tareas Realizadas** | 
@@ -38,4 +38,14 @@ Hasta el momento el avance es la inicialización del repositorio, abrir los arch
 | *Jose Gutierrez* [Perfil de GitHub](https://github.com/VidarSD) | Revisar el maquetado, buscar el estilo que se usará en el proyecto, revisar lo que se busca tener visualmente en el proyecto y comenzar a trabajar en Figma. |
 | *David Teloxa* [Perfil de GitHub](https://github.com/Teloxa) | Revisar el maquetado, buscar el estilo que se usará en el proyecto, revisar lo que se busca tener visualmente en el proyecto y comenzar a trabajar en Figma.| 
 
+---
 
+## 🧑‍💻 2do. reporte de actividades 
+
+
+| **Miembro del Equipo**  | **Tareas Realizadas** | 
+| :--- | :---: |
+| *Jacqueline González* [Perfil de GitHub](https://github.com/ajgc6) | Conectar con Firebase, realizar la autenticación con Google y realizar reporte de actividades. | 
+| *Alexandro Vega* [Perfil de GitHub](https://github.com/Cloneeu)| Implementar funciones para convertir nombres de empresas a simbolos y actualice las llamadas a la API para que soporte nombres y simbolos, igualmente agregue un diccionario donde se mapea nombre con simbolo de empresa, añadió soporte para obtener noticias de empresas y actualizado el manejo de fechas en las peticiones a la API, añadió la función getRandomCompanies para obtener 3 empresas aleatorias y actualicé index.js para probarla.|
+| *Jose Gutierrez* [Perfil de GitHub](https://github.com/VidarSD) | Realización del dashboard donde se apreciá la empresa solicitada, además del top 3 de empresas semanal, apreciando las gráficas e información de las empresas.|
+| *David Teloxa* [Perfil de GitHub](https://github.com/Teloxa) | Comenzo con la pagina de inicio para que antes de autenticar nos encontremos en esta página y al momento de ingresar con una cuenta Google poder redirigirnos hacia nuestro dashboard| 
