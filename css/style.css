@@ -1,5 +1,295 @@
+
+
+:root {
+  --yellow-bg-color: #DEDE1B; /* global scope */
+}
+
+
 body
 {
+    background-color: #f2f2f2;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+
+}
+
+.card-shadow{
+  box-shadow: 15px 11px 37px -16px rgba(0,0,0,0.58);
+    -webkit-box-shadow: 15px 11px 37px -16px rgba(0,0,0,0.58);
+    -moz-box-shadow: 15px 11px 37px -16px rgba(0,0,0,0.58);
+}
+
+/* SECCION PARA EL NAVBAR */
+
+input {
+    max-width: 400px;
+    background-color: #f5f5f5;
+    color: #242424;
+    padding: .15rem .5rem;
+    min-height: 40px;
+    border-radius: 15px;  
+    padding: 10;
+    outline: none;
+    border: none;
+    padding-left: 1rem;
+    color: #838383;
+  }
+
+
+  .round-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%;
     background-color: black;
     color: white;
+  }
+
+  .round-btn a i{
+    color: white;
+  }
+
+
+    
+  .round-btn-secondary{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+    background-color: var(--yellow-bg-color);
+    color: white;
+  }
+
+  
+  .round-btn-secondary a i{
+    color: black;
+  }
+
+
+
+  /* SECCION PARA EL MAIN  */
+
+
+
+
+
+
+  header{
+    color: black;
+
+  }
+
+
+  header h1{
+    font-weight: 800;
+  }
+
+
+
+  /* Seccion para las tarjetas */
+
+
+  .card-chart{
+    width: 70%;
+    color: black;
+    height: 250px;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #ffffff;
+  
+  
+
+  }
+
+  .grafica-valores{
+
+    min-width: auto;
+    max-height: 150px;
+    margin-top: 20px;
+  }
+  .borde-color {
+    border-left: 5px solid rgb(81, 3, 110);
+  }
+
+  .stock-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+  }
+  
+  .stock-info {
+    display: flex;
+    align-items: baseline; /* alinea el texto grande con el chico */
+    gap: 6px; /* separa Amazon y AMZN */
+  }
+  
+  .stock-name {
+    font-weight: 900;
+    font-size: 1.4rem;
+    margin: 0;
+  }
+  
+  .stock-symbol {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0;
+  }
+  
+  .stock-change {
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 0;
+  }
+  
+  .stock-change.positive {
+    color: #556B2F; /* verde tipo financiero */
+  }
+  
+  .stock-change.negative {
+    color: #b22222; /* rojo si fuera pérdida */
+  }
+
+  /* Seccion para la tarjeta del puro fokin stock solo  */
+
+  .single-stock-card {
+
+  
+  width: 25%;
+  height: 250px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-family: 'Poppins', sans-serif;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+}
+
+
+
+
+
+
+.single-stock-name {
+
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: #000;
+}
+
+.single-stock-symbol {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #6d6c6c;
+  margin: 0;
+}
+
+.single-stock-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  margin: 8px 0;
+}
+
+.single-stock-price {
+  font-size: 2rem;
+  font-weight: 300;
+  margin: 0;
+  color: #000;
+}
+
+.single-stock-currency {
+  font-size: 1rem;
+  color: #888;
+  margin: 0;
+}
+
+.single-stock-diff {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.single-stock-diff.positive {
+  color: #3b5e2b; /* verde financiero */
+}
+
+
+/* Tarjetas mas peque;as */
+.single-stock-card-sm{
+  width: 30%;
+  height: 200px;
+  padding: 15px;
+  border-left: 5px solid var(--yellow-bg-color);
+  background: white;
+  
+
+}
+
+.single-stock-name {
+
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: #000;
+}
+
+.single-stock-symbol {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #6d6c6c;
+  margin: 0;
+}
+
+
+.single-stock-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  margin: 8px 0;
+}
+
+.single-stock-price {
+  font-size: 2rem;
+  font-weight: 300;
+  margin: 0;
+  color: #000;
+}
+
+.single-stock-currency {
+  font-size: 1rem;
+  color: #888;
+  margin: 0;
+}
+
+.single-stock-diff {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.single-stock-diff.positive {
+  color: #3b5e2b; /* verde financiero */
+}
+
+
+  
+
+
+.top-container{
+  color: black;
+}
+
+
+
+.top-container h1{
+  color: black;
+  font-weight: 500;
 }
