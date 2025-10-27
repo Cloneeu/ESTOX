@@ -46,9 +46,9 @@
 
         <h3><i class="fa-solid fa-ranking-star"></i> Top Empresas Semanal</h3>
 
-        <div class="row w-100 justify-content-between">
+        <div class="row w-100 justify-content-between" id="topEmpresasContainer">
 
-          <div class="col-4 single-stock-card-sm card-shadow">
+          <!-- <div class="col-4 single-stock-card-sm card-shadow">
             <div class="single-stock-header">
               <h3 class="single-stock-name">Amazon</h3>
               <p class="single-stock-symbol">AMZN</p>
@@ -89,7 +89,7 @@
             </div>
           
             <p class="single-stock-diff positive">+63.62</p>
-          </div>
+          </div> -->
 
         </div>
       </div>
@@ -100,21 +100,36 @@
       <div class="row w-100 justify-content-between mt-5" >
       
         
-          <div class="col-8 card-chart card-shadow">
+          <div class="col-6 card-chart card-shadow">
   
             <div class="card-body">            
               <div class="stock-row">
                 <div class="stock-info">
-                  <h3 class="stock-name mt-2">Amazon</h3>
-                  <p class="stock-symbol">AMZN</p>
+                  <h3 class="stock-name mt-2">Apple</h3>
+                  <p class="stock-symbol">APPL</p>
                 </div>
-                <p class="stock-change positive">+1.62%</p>
+                <!-- <p class="stock-change positive">+1.62%</p> -->
               </div>          
               <canvas id="miGrafica" class="grafica-valores"></canvas>
             </div>
           </div>  
         
 
+          <div class="col-6 card-chart card-shadow">
+  
+            <div class="card-body">            
+              <div class="stock-row">
+                <div class="stock-info">
+                  <h3 class="stock-name mt-2">Apple</h3>
+                  <p class="stock-symbol">APPL</p>
+                </div>
+                <!-- <p class="stock-change positive">+1.62%</p> -->
+              </div>         
+              <canvas id="miGraficaBar" class="grafica-valores"></canvas>
+            </div>
+          </div>  
+        
+<!-- 
           <div class="col-4 single-stock-card card-shadow">
             <div class="single-stock-header">
               <h3 class="single-stock-name">Amazon</h3>
@@ -127,7 +142,7 @@
             </div>
           
             <p class="single-stock-diff positive">+63.62</p>
-          </div>
+          </div> -->
         
 
           
@@ -147,5 +162,6 @@
   
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script type="module" src="/js/dashboard.js"></script>
   <script src="./js/chart.js"></script>
 </html>

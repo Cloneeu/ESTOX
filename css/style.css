@@ -97,7 +97,7 @@ input {
 
 
   .card-chart{
-    width: 70%;
+    width: 49%;
     color: black;
     height: 250px;
     border-radius: 10px;
@@ -279,6 +279,9 @@ input {
   color: #3b5e2b; /* verde financiero */
 }
 
+.single-stock-diff.negative {
+  color: #b22222; /* rojo si fuera pérdida */  
+}
 
   
 

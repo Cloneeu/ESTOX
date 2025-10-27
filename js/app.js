@@ -188,7 +188,7 @@ export const getStocks = async (companyNames = null) => {
     )
     const data = await response.json()
     // TODO: Borrar despues el console.log
-    console.log(data)
+    //console.log(data)
     return data
   } catch (error) {
     console.log(error.message)
@@ -248,7 +248,7 @@ export const getEOD = async (companyNames = null, daysAgo = null) => {
     const response = await fetch(url)
     const data = await response.json()
     // TODO: Borrar despues el console.log
-    console.log(data)
+   // console.log(data)
     return data
   } catch (error) {
     console.log(error.message)
