@@ -1,7 +1,7 @@
 :root {
   --primary-color: rgba(234, 240, 244);
   --text-color: #000000;
-  --highlight-color: #de1b1b;
+  --highlight-color: #dede1b;
 }
 
 body {
@@ -14,12 +14,9 @@ body {
   display: flex;
   flex-direction: column;
 }
-
 .navbar {
   background-color: #f2f2f2;
-  padding: 1rem 0;
   font-size: 22px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .navbar > .container {
   width: 90%;
@@ -46,15 +43,20 @@ body {
   color: var(--highlight-color) !important;
 }
 
+
 .auth-section {
   justify-content: center;
   margin-top: 1rem;
 }
 
+
+
+
 .hero-section {
   flex: 1 0 auto;
   display: flex;
-  background: #025968;
+  /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */
+  background: radial-gradient(54.37% 185.57% at 24.74% 28.89%, #FFFFFF 0%, #7EA3B9 100%);
   align-items: center; 
   padding: 4rem 0; 
 }
@@ -64,8 +66,22 @@ body {
 }
 
 
+.btn-more {
+  position: absolute;
+  width: 152.78px;
+  height: 40px;
+  border: none;
+  background: #DEDE1B;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+}
 
 
+
+.btn-more:hover {
+background-color: #000000;
+color: white;
+}
 
 
 
