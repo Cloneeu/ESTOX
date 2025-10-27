@@ -165,6 +165,30 @@ function prepareChartData(data) {
 
 
 
+//Funcion para la busqueda en el formulario
+
+const wireSearch = () => {
+
+  const form = document.getElementById('searchForm')
+  const input = document.getElementById('searchInput')
+  form.addEventListener('submit',async (e) =>{
+    e.preventDefault()
+    const empresa = input.value.trim()
+    if(!empresa){
+      return
+    }
+
+    console.log(empresa)
+
+    const result = await getEOD(empresa,30)
+
+
+    console.log(result)
+  })
+
+}
+
+
 
 
 init()
