@@ -1,8 +1,7 @@
-import { API_TOKEN, STOCK_DATA_URL, EOD_URL, NEWS_URL } from "./environment.js"
+import { API_TOKEN, STOCK_DATA_URL, EOD_URL, NEWS_URL, COINS_URL } from "./environment.js"
 
 /**
  * Diccionario con las primeras 50 empresas del S&P 500
- * Mapea el nombre de la empresa con su símbolo bursátil
  */
 export const SP500_TOP_50 = {
   Apple: "AAPL",
@@ -274,9 +273,6 @@ export const getEOD = async (companyNames = null, daysAgo = null) => {
  * // Obtener noticias para varias empresas
  * const news = await getNews("Apple,Microsoft");
  * @example
- * // Obtener 20 noticias para Tesla
- * const news = await getNews("Tesla", 20);
- * @example
  * // Obtener noticias de una empresa aleatoria del S&P 500
  * const news = await getNews();
  * @remarks
@@ -300,6 +296,127 @@ export const getNews = async (companyNames = null, limit = 3) => {
     return data
   } catch (error) {
     console.log(error.message)
+    throw error
+  }
+}
+
+/** 
+* Obtiene la lista de todas las criptomonedas disponibles desde la API de CoinPaprika
+* Retorna aproximadamente 50,000 criptomonedas con información básica
+* @async
+* @function listCoins
+* @returns {Promise<Array<Object>>} Promesa que resuelve con un array de objetos de criptomonedas
+* @throws  {Error} Lanza un error si la petición fetch falla
+* 
+* @example
+* const allCoins = await listCoins() 
+* console.log(allCoins[0]) 
+* // Retorna: 
+* // { 
+* //   "id": "btc-bitcoin",
+* //   "name": "Bitcoin", 
+* //   "symbol": "BTC",
+* //   "rank": 1,
+* //   "is_new": false,
+* //   "is_active": true, 
+* //   "type": "coin" 
+* // }
+* 
+* @remarks
+* Esta funcion se usa en getCoinInfo
+*/
+export const listCoins = async () => {
+  try {
+    const response = await fetch(COINS_URL + `/coins`)
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.error(error.message)
+    throw error
+  }
+}
+
+/**
+ * Obtiene información detallada de una criptomoneda por su nombre, símbolo o ID
+ * 
+ * @async
+ * @function getCoinInfo
+ * @param {string} name - Nombre, símbolo o ID de la criptomoneda (case-insensitive)
+ * @returns {Promise<Object>} Promesa que resuelve con un objeto conteniendo toda la información de la criptomoneda
+ * @throws {Error} Si no se proporciona un nombre, si no se encuentra la criptomoneda, o si la petición falla
+ * 
+ * @example
+ * // Buscar por nombre completo
+ * const bitcoin = await getCoinInfo("Bitcoin")
+ * console.log(bitcoin.symbol) // "BTC"
+ * console.log(bitcoin.rank) // 1
+ * 
+ * @example
+ * // Buscar por símbolo
+ * const ethereum = await getCoinInfo("ETH")
+ * console.log(ethereum.name) // "Ethereum"
+ * 
+ * @example
+ * // Buscar por ID
+ * const solana = await getCoinInfo("sol-solana")
+ * 
+ * @example
+ * // Buscar con coincidencia parcial
+ * const doge = await getCoinInfo("doge")
+ * console.log(doge.name) // "Dogecoin"
+ * 
+ * @remarks
+ * - Esta función hace 2 peticiones a la API
+ * - Soporta búsqueda exacta por: id, symbol, name
+ * - Si no hay coincidencia exacta, busca coincidencia parcial en el nombre
+ * - La búsqueda es case-insensitive y elimina espacios al inicio/final
+ * - El objeto retornado contiene información completa como: descripción, precio, market cap, 
+ *   volumen, supply, enlaces sociales, etc.
+ */
+export const getCoinInfo = async (name) => {
+  try {
+      if (!name) {
+          throw new Error(
+              "Se requiere un nombre para buscar la informacion de la criptomoneda"
+          )
+      }
+      // Obtener la lista de todas las criptomonedas de la API
+      const allCoins = await listCoins()
+
+      // Normalizar el nombre a buscar
+      const normalizedName = name.toLowerCase().trim()
+
+      // Buscar coincidencias
+      const coin = allCoins.find(
+          (coin) =>
+              coin.id.toLowerCase() === normalizedName ||
+              coin.symbol.toLowerCase() === normalizedName ||
+              coin.name.toLowerCase() === normalizedName
+      )
+
+      // Si no se encuentra, buscar una coincidencia parcial
+      const partialMatch = !coin ? allCoins.find((coin) =>
+              coin.name.toLowerCase().includes(normalizedSearch)
+        ) : null
+      
+      const foundCoin = coin || partialMatch
+
+      if (!foundCoin)
+        throw new Error("No se pudo encontrar la criptomoneda")
+      
+      // Obtener la info usando la API
+      const response = await fetch(COINS_URL + `/coins/${foundCoin.id}`)
+
+      // Por si acaso
+      if (!response.ok) {
+        throw new Error(`Error HTTP, error ${response.status}`)
+      }
+
+      const data = await response.json()
+      return data
+
+  } catch (error) {
+    console.error(error.message)
     throw error
   }
 }
