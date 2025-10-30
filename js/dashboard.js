@@ -195,7 +195,7 @@ const wireSearch = () => {
 // Función para cargar y mostrar las 3 criptomonedas del ranking
 async function cargarCriptos() {
   try {
-    const response = await fetch(COINS_URL);
+    const response = await fetch(COINS_URL+"/tickers");
     const data = await response.json();
 
     const top3 = data
