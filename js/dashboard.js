@@ -24,8 +24,8 @@ const renderTop3 = async () =>{
    
     const result = await getStocks()
    
-
     const card= document.createElement('div')
+    
     
     card.classList.add('col-4', 'single-stock-card-sm', 'card-shadow') 
     card.innerHTML= `
