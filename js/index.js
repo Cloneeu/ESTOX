@@ -1,5 +1,5 @@
 console.log('test')
-import {getStocks, getEOD, getNews, getRandomCompanies} from "./app.js"
+import {getStocks, getEOD, getNews, getRandomCompanies, listCoins, getCoinInfo} from "./app.js"
 // PRUEBAS
 const companies = getRandomCompanies()
 //console.log(companies)
@@ -58,3 +58,11 @@ console.log ('estocs',stocks)
 //
 //// Con símbolos
 //await getNews("AAPL,MSFT", 5)
+
+// COINS
+
+const coinsList = listCoins()
+console.log(coinsList)
+
+const bitcoinInfo = getCoinInfo("BitCoin")
+console.log(bitcoinInfo)
