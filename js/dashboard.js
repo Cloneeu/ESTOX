@@ -12,8 +12,8 @@ const empresas_container = document.getElementById('topEmpresasContainer')
 const init = async () =>{
 
   renderTop3()
-  renderGraphics()
-
+  renderGraphics("Amazon",10)
+  wireSearch()
 }
 
 
@@ -56,11 +56,14 @@ const renderTop3 = async () =>{
 }
 let lineChartInstance = null;
 let barChartInstance = null;
-const renderGraphics = async () => {
+const renderGraphics = async (empresa,dias) => {
   // Obtener datos
-  const result = await getEOD("Apple", 11);
+  const result = await getEOD(empresa, dias);
   const data = result.data;
-
+  const title = document.getElementById('stock-name')
+  const title2 = document.getElementById('stock-name2')
+  title.textContent = empresa.toUpperCase()
+  title2.textContent = empresa.toUpperCase()
   // Preparar labels y datasets
   const { labels, openValues, closeValues, highValues, lowValues } = prepareChartData(data);
 
@@ -180,10 +183,24 @@ const wireSearch = () => {
 
     console.log(empresa)
 
-    const result = await getEOD(empresa,30)
+   const result = await getEOD(empresa,30)
+  console.log(result)
+   if(result.data.length  == 0)
+   {
+    const container = document.getElementById("alert-container");
+    container.innerHTML = `
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      No hay datos disponibles para la empresa .
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+   `;
+     console.log("Error")
+   }
+  else
+    renderGraphics(empresa,30)
 
 
-    console.log(result)
+   // console.log(result)
   })
 
 }
