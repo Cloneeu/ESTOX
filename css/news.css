@@ -1,0 +1,230 @@
+:root {
+    --yellow-bg-color: #DEDE1B; 
+}
+
+body {
+    background-color: #f2f2f2;
+    color: black; 
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    padding-top: 80px; 
+}
+
+.container {
+    max-width: 1200px;
+}
+
+/* --- SOMBRA DE TARJETA ESTILO DASHBOARD --- */
+.card-shadow {
+    box-shadow: 15px 11px 37px -16px rgba(0,0,0,0.58);
+    -webkit-box-shadow: 15px 11px 37px -16px rgba(0,0,0,0.58);
+    -moz-box-shadow: 15px 11px 37px -16px rgba(0,0,0,0.58);
+    border-radius: 10px; 
+}
+
+/* Efecto hover suave para todas las tarjetas */
+.single-stock-card:hover, .single-stock-card-sm:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.navbar-filters {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #1a1a1a;
+    padding: 0; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+    border-bottom: 2px solid #0d0d0d; 
+}
+
+/* Contenedor interno del navbar para espaciado y centrado */
+.navbar-filters .container {
+    height: 70px; 
+    display: flex;
+    align-items: center; /* Centrar verticalmente los botones */
+    justify-content: center; /* Centrar horizontalmente los botones */
+}
+
+/* --- ESTILOS DE FILTROS ADAPTADOS PARA COINCIDIR CON EL NAVBAR OSCURO --- */
+.filter-btn {
+    border: none; 
+    background-color: transparent; 
+    color: #9ca3af; 
+    font-weight: 500; 
+    padding: 0.75rem 1rem; 
+    border-radius: 0; 
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    box-shadow: none; 
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    margin: 0 5px; /* Pequeño margen entre botones */
+    height: 100%; /* Asegurar que el botón ocupe la altura del navbar */
+    display: flex;
+    align-items: center; /* Centrar texto del botón verticalmente */
+}
+
+.filter-btn:hover {
+    background-color: rgba(255, 255, 255, 0.08); /* Efecto hover sutil */
+    color: black; /* Se vuelve blanco en hover */
+}
+
+
+.filter-btn.active {
+    background-color: transparent; /* Fondo transparente */
+    color: var(--yellow-bg-color); /* Texto amarillo de acento */
+    font-weight: 700;
+    position: relative; /* Para el pseudo-elemento */
+}
+
+.filter-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px; 
+    background-color: var(--yellow-bg-color); 
+    border-radius: 2px 2px 0 0; /* Bordes superiores ligeramente redondeados */
+}
+
+.filter-btn.active:hover {
+    background-color: rgba(255, 255, 255, 0.08); 
+    color: var(--yellow-bg-color);
+}
+
+/* --- ESTILOS DE NOTICIAS Y TARJETAS --- */
+
+/* Noticia principal */
+.single-stock-card {
+    width: 100%;
+    height: auto; 
+    min-height: 250px;
+    padding: 15px;
+    background-color: #fff;
+    font-family: 'Poppins', sans-serif;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    cursor: pointer;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.main-news-img {
+    width: 60%; 
+    max-height: 350px; 
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.single-stock-card > .main-news-content {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-news-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem; 
+    line-height: 1.3;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.main-news-excerpt {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.single-stock-card-sm{
+    padding: 15px;
+    border-left: 5px solid var(--yellow-bg-color); 
+    background: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%; 
+}
+
+.single-stock-card-sm img {
+    width: 100%;
+    height: 140px; 
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.single-stock-name {
+    font-weight: 800;
+    font-size: 1.25rem; 
+    color: #000;
+    margin-bottom: 5px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow-wrap: break-word;
+}
+
+.news-meta {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #242424; 
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+}
+.carousel-card-item {
+    flex: 0 0 calc(33.333% - (2rem / 3)); 
+}
+
+/* Ajuste de color para los botones de navegación del carrusel (Negro para contraste) */
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #000; 
+    border-radius: 50%;
+}
+
+/* --- AJUSTES RESPONSIVOS --- */
+@media (max-width: 1200px) {
+    .single-stock-card {
+        flex-direction: column;
+    }
+    .main-news-img {
+        width: 100%;
+        max-height: 300px;
+        margin-bottom: 15px;
+    }
+    .single-stock-card > .main-news-content {
+        width: 100%;
+    }
+    .carousel-card-item {
+        flex: 0 0 calc(50% - (1rem / 2)); 
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-card-item {
+        flex: 0 0 100%; 
+    }
+    .main-news-title {
+        font-size: 1.5rem;
+    }
+    .navbar-filters .container {
+        height: 60px;
+    }
+    .filter-btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+    }
+}

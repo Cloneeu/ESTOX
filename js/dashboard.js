@@ -196,10 +196,8 @@ const wireSearch = () => {
 async function cargarCriptos() {
   try {
     const response = await fetch(COINS_URL);
-    //const response = await fetch("https://api.coinpaprika.com/v1/tickers");
     const data = await response.json();
 
-    // Tomar las 3 criptomonedas top (rank 1-3)
     const top3 = data
       .filter(coin => coin.rank && coin.rank <= 3)
       .sort((a, b) => a.rank - b.rank);
