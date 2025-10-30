@@ -1,4 +1,5 @@
 import {getStocks, getEOD, getNews, getRandomCompanies} from "./app.js"
+import { COINS_URL } from "./environment.js"
 
 
 //VIEWS 
@@ -188,6 +189,51 @@ const wireSearch = () => {
 
 }
 
+
+
+
+// Función para cargar y mostrar las 3 criptomonedas del ranking
+async function cargarCriptos() {
+  try {
+    const response = await fetch(COINS_URL);
+    //const response = await fetch("https://api.coinpaprika.com/v1/tickers");
+    const data = await response.json();
+
+    // Tomar las 3 criptomonedas top (rank 1-3)
+    const top3 = data
+      .filter(coin => coin.rank && coin.rank <= 3)
+      .sort((a, b) => a.rank - b.rank);
+
+    const container = document.getElementById("crypto-container");
+    container.innerHTML = "";
+
+    top3.forEach(coin => {
+      const card = document.createElement("div");
+      card.classList.add("col-4", "single-stock-card-sm", "card-shadow");
+      card.innerHTML = `
+        <div class="single-stock-header">
+          <h3 class="single-stock-name">${coin.name}</h3>
+          <p class="single-stock-symbol">${coin.symbol}</p>
+        </div>
+        <div class="single-stock-price-row">
+          <p class="single-stock-price">${coin.quotes.USD.price.toFixed(2)}</p>
+          <p class="single-stock-currency">USD</p>
+        </div>
+        <p class="single-stock-diff ${coin.quotes.USD.percent_change_24h >= 0 ? 'positive' : 'negative'}">
+          ${coin.quotes.USD.percent_change_24h.toFixed(2)}%
+        </p>
+      `;
+      container.appendChild(card);
+    });
+
+  } catch (error) {
+    console.error("Error al cargar criptomonedas:", error);
+    const container = document.getElementById("crypto-container");
+    container.innerHTML = `<p class="text-danger">⚠️ No se pudieron cargar las criptomonedas.</p>`;
+  }
+}
+
+document.addEventListener("DOMContentLoaded", cargarCriptos);
 
 
 
