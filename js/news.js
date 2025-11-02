@@ -163,3 +163,9 @@ document.addEventListener("DOMContentLoaded", () => {
     createFilterNavigation();
     cargarNoticias();
 });
+
+
+
+
+
+
