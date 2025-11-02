@@ -56,7 +56,7 @@
             </li>
           </ul>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-outline-dark me-md-2" id="loginBtn">Login</button>
+            <a class="btn btn-outline-dark me-md-2" id="loginBtn">Login with google</a>
             <button class="btn btn-outline-danger" style="display:none" id="logoutBtn">Logout</button>
           </div>
         </div>
@@ -66,7 +66,7 @@
     <!-- Main content section -->
     <section class="hero-section">
       <div class="container">
-        <div class="row align-items-center">
+        <div class="row align-items-center" id="main-content">
           <div class="col-12 col-md-5">
             <img
               src="./assets/logo.svg"
@@ -77,32 +77,34 @@
           </div>
 
           <div class="col-12 col-md-7">
-            <p class="display-5 fw-bold">STX</p>
-            <h2 class="fw-bold">Monitor and consult!</h2>
+            <p class="brand-title">STX</p>
+            <p class="tagline">Monitor and consult!</p>
             <p class="lead mb-4">
               With STX, you can track movements in the stock market, crypto market, and even NASDAQ in real time. Log in to see what we have for you.
             </p>
             <p>
-              <a class="btn btn-more" href="#" role="button">Learn more</a>
+              <a class="btn btn-more" href="login-page.html" role="button">Learn more</a>
             </p>
           </div>
+        </div>
+  
         </div>
       </div>
     </section>
 
     <!-- Footer section -->
-    <footer class="footer">
-      <div class="container">
-        <div class="row align-items-start">
-          <div class="col-12 col-md-6 side01">
+    <footer class="footer ">
+      <div class="container-fluid px-0">
+        <div class="row align-items-center justify-content-between py-4 g-0 ">
+          <div class="col-12 col-md-7 col-lg-8 side01 text-start ps-2 ps-md-3 mb-3 mb-md-0">
             <h3 class="fw-bold">STX</h3>
             <p class="lead mb-4">
-              Rights to data reserved to STX ©. By browsing our site, you accept our
+              Rights to data reserved to STX ©. By browsing our site, you accept our.
             </p>
-            <a href="#">Terms and conditions</a>
+            <a href="#" class="text-reset text-decoration-none fw-bold ">Terms and conditions</a>
           </div>
-          <div class="col-12 col-md-6 side02 text-md-start">
-            <div class="social-icons">
+          <div class="col-12 col-md-auto side02 text-md-end pe-2 pe-md-3">
+            <div class="social-icons d-flex align-items-center justify-content-start justify-content-md-end gap-3">
               <a href="#"><i class="fab fa-instagram"></i></a>
               <a href="#"><i class="fab fa-facebook"></i></a>
               <a href="#"><i class="fab fa-twitter"></i></a>

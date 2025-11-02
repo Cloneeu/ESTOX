@@ -65,6 +65,58 @@ body {
   align-items: center;
 }
 
+/* Hero title and tagline */
+.brand-title {
+  font-weight: 800;
+  /* Responsive size: large on desktop, comfortable on mobile */
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--text-color);
+  margin: 0 0 .25rem 0;
+}
+
+.tagline {
+  font-weight: 700;
+  font-size: clamp(1.25rem, 3.5vw, 2rem);
+  line-height: 1.2;
+  margin: 0 0 .5rem 0;
+  color: #1f2937; /* slightly darker for contrast */
+}
+
+/* Primary call-to-action button on hero */
+.btn-more {
+  background-color: var(--highlight-color);
+  color: #000;
+  border: none;
+  padding: 0.7rem 1.25rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 9em;
+  box-shadow: 6px 6px 12px #c5c5c5,
+              -6px -6px 12px #ffffff;
+  transition: transform 0.08s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.btn-more:hover {
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+}
+
+.btn-more:active {
+  transform: translateY(0);
+  box-shadow: 3px 3px 8px #c5c5c5,
+              -3px -3px 8px #ffffff;
+}
+
+.btn-more:focus-visible {
+  outline: 3px solid rgba(0,0,0,0.15);
+  outline-offset: 2px;
+}
+
 
 .btn-more {
   position: absolute;
@@ -99,37 +151,11 @@ color: white;
 .footer {
   background-color: #000000;
   color: white;
-  padding: 2rem 0;
-  text-align: center;
+  padding: .2rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Position side02 at the bottom-right of the footer on md+ screens */
-@media (min-width: 768px) {
-  .footer .container {
-    position: relative; /* establish containing block for absolute positioning */
-    padding-right: 180px; /* reserve space so side01 doesn't get overlapped */
-    min-height: 140px; /* ensure there is vertical room */
-  }
-  .footer .side02 {
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
-    width: 160px; /* fixed width for the right block (adjustable) */
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-  .footer .side02 .social-icons{
-    justify-content: flex-end;
-  }
-}
-
-/* On small screens, keep normal document flow */
-@media (max-width: 767.98px) {
-  .footer .container { position: static; padding-right: 0.5rem; }
-  .footer .side02 { position: static; width: auto; justify-content: flex-start; padding-top: .75rem; }
-}
+/* Rely on Bootstrap grid for layout in the footer; remove absolute positioning */
 
 .footer-title {
   font-weight: 700;
@@ -138,7 +164,6 @@ color: white;
 }
 
 .footer-text {
-  font-weight: 300;
   font-size: 0.9rem;
   opacity: 0.8;
   max-width: 800px;
