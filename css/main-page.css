@@ -1,0 +1,165 @@
+:root {
+  --primary-color: rgba(234, 240, 244);
+  --text-color: #000000;
+  --highlight-color: #dede1b;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.navbar {
+  background-color: #f2f2f2;
+  font-size: 22px;
+}
+.navbar > .container {
+  width: 90%;
+  max-width: none; /* override Bootstrap's fixed max-width */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.5rem; /* optional tweak for small padding */
+  padding-right: 0.5rem;
+}
+.navbar-brand {
+  font-weight: 700;
+  font-size: 3rem;
+  color: var(--text-color) !important;
+}
+
+.nav-link {
+  color: var(--text-color) !important;
+  font-weight: 500;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--highlight-color) !important;
+}
+
+
+.auth-section {
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+
+
+
+.hero-section {
+  flex: 1 0 auto;
+  display: flex;
+  /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */
+  background: radial-gradient(54.37% 185.57% at 24.74% 28.89%, #FFFFFF 0%, #7EA3B9 100%);
+  align-items: center; 
+  padding: 4rem 0; 
+}
+.hero-section .container {
+  display: flex;
+  align-items: center;
+}
+
+
+.btn-more {
+  position: absolute;
+  width: 152.78px;
+  height: 40px;
+  border: none;
+  background: #DEDE1B;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+}
+
+
+
+.btn-more:hover {
+background-color: #000000;
+color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* FOOTER STYLES */
+.footer {
+  background-color: #000000;
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Position side02 at the bottom-right of the footer on md+ screens */
+@media (min-width: 768px) {
+  .footer .container {
+    position: relative; /* establish containing block for absolute positioning */
+    padding-right: 180px; /* reserve space so side01 doesn't get overlapped */
+    min-height: 140px; /* ensure there is vertical room */
+  }
+  .footer .side02 {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    width: 160px; /* fixed width for the right block (adjustable) */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .footer .side02 .social-icons{
+    justify-content: flex-end;
+  }
+}
+
+/* On small screens, keep normal document flow */
+@media (max-width: 767.98px) {
+  .footer .container { position: static; padding-right: 0.5rem; }
+  .footer .side02 { position: static; width: auto; justify-content: flex-start; padding-top: .75rem; }
+}
+
+.footer-title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.footer-text {
+  font-weight: 300;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Social icons in footer */
+.side02 .social-icons {
+  gap: 0.75rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.side02 .social-icons a {
+  color: #ffffff;
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
